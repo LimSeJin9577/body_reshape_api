@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% set active_page = "body_reshape" %}
+
+{% block title %}Body Reshape{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+
+{% endblock %}
+
+{% block page_content %}
+<h1 class="cap">Body Reshape AI</h1>
+<div class="col-12 up-area">
+    <ul class="mystyle_ul">
+        <li class="menu">
+            <a><h3 class="cap">Work with Image</h3></a>
+            <!-- Drop & Drag Image -->
+            <!-- Show Image -->
+            <!-- dragbar -->
+        </li>
+    </ul>
+</div>
+<div class="col-12 up-area">
+    <ul style="list-style-type: none;">
+        <li class="menu">
+            <a><h3 class="cap">Work with Files</h3></a>
+            <!-- drop & drag files -->
+        </li>
+    </ul>
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+<script>
+    // html dom 이 다 로딩된 후 실행된다.
+    $(document).ready(function(){
+        // menu 클래스 바로 하위에 있는 a 태그를 클릭했을때
+        $(".menu>a").click(function(){
+            var submenu = $(this).next("ul");
+ 
+            // submenu 가 화면상에 보일때는 위로 보드랍게 접고 아니면 아래로 보드랍게 펼치기
+            if( submenu.is(":visible") ){
+                submenu.slideUp();
+            }else{
+                submenu.slideDown();
+            }
+        });
+    });
+</script>
+
+{% endblock %}
