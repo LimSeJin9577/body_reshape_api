@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 from .library.helpers import *
 from app.routers import unsplash, twoforms, accordion
 
-# uvicorn main:app --reload port 8080
+# uvicorn app.main:app --reload port 8080
 
 app = FastAPI()
 
