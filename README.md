@@ -29,8 +29,8 @@ RESPONSE_TYPE : List(str)
 https://drive.google.com/drive/folders/1-_qEqwZuL6bXLqPNHq8gAEe4_9FhNv7o?usp=sharing  
   
 <Directions>  
-body_reshape_api  
-    ㄴ app  
+body_reshape_api
+    ㄴ app
         ㄴ library  
             ㄴ body_reshape  
                 ㄴ models  
