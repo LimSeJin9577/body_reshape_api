@@ -54,12 +54,12 @@ if __name__ == "__main__":
 
     # Initiate ENV
     ENV_MODEL = os.getcwd()
-    ROOT_ENV = ENV_MODEL.split("body_reshape_api")[0]
+    ROOT_ENV = ENV_MODEL.split("app")[0]
     # Initiate without testconfig
     reshape_ckpt_path = os.path.join(ENV_MODEL, "models/body_reshape_model.pth") # static, Reshape Model
     pose_estimation_ckpt = os.path.join(ENV_MODEL,"models/body_pose_model.pth") # static, Pose Model
-    save_dir = os.path.join(ROOT_ENV,"body_reshape_api/static/resources/temp_save") # static, output_path
-    src_dir = os.path.join(ROOT_ENV,"body_reshape_api/static/resources/temp_src") # static, input_path
+    save_dir = os.path.join(ROOT_ENV,"static/resources/temp_save") # static, output_path
+    src_dir = os.path.join(ROOT_ENV,"static/resources/temp_src") # static, input_path
 
     
     # timestamp = time.strftime("%Y%m%d-%H%M%S", time.localtime())
