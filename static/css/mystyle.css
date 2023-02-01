@@ -4,10 +4,10 @@ body {
     margin: 0;
     padding-bottom: 100px;
     box-sizing: border-box;
-    color:#000;
+    color: #000;
 }
 
-.wrapper{
+.wrapper {
     max-width: 960px;
 }
 
@@ -15,33 +15,35 @@ footer {
     position: absolute;
     bottom: 0;
     height: 100px;
-    padding-top:50px;
+    padding-top: 50px;
 }
 
-.responsive{
+.responsive {
     max-width: 100%;
     height: auto;
     margin-left: auto;
     margin-right: auto;
 }
 
-.up-area{
-    margin:10px auto 30px;
+.up-area {
+    margin: 10px auto 30px;
 }
 
 /* color finder */
-#file{
-    display: none;
-}/* color finder */
-#file_style{
+#file {
     display: none;
 }
 
-.upload{
+/* color finder */
+#file_style {
+    display: none;
+}
+
+.upload {
     padding: 20px 0;
 }
 
-.upload-area{
+.upload-area {
     height: 250px;
     border: 5px dashed lightgray;
     border-radius: 3px;
@@ -52,14 +54,14 @@ footer {
     position: relative;
 }
 
-.upload-area:hover{
+.upload-area:hover {
     cursor: pointer;
 }
 
-.upload-area h2{
+.upload-area h2 {
     font-size: 22px;
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
     text-align: center;
     font-weight: normal;
     font-family: sans-serif;
@@ -70,11 +72,11 @@ footer {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    width:300px;
+    width: 300px;
 }
 
-.box_button{
-	font-weight: 700;
+.box_button {
+    font-weight: 700;
     background-color: #cacbcc;
     color: #515353;
     padding: 8px 16px;
@@ -90,12 +92,12 @@ footer {
 }
 
 @media(max-width: 768px) {
-    .upload-area h2{
+    .upload-area h2 {
         font-size: 20px;
     }
 }
 
-.my-row{
+.my-row {
     width: 100vw;
     display: flex;
     flex-direction: row;
@@ -105,12 +107,118 @@ footer {
 
 }
 
-.my-col-12{
-width: 18vw !important;
-display: flex;
-padding-right: 1vw;
-padding-left: 1vw;
-flex-direction: column;}
+.my-col-12 {
+    width: 18vw !important;
+    display: flex;
+    padding-right: 1vw;
+    padding-left: 1vw;
+    flex-direction: column;
+}
 
-.menu a{cursor:pointer;}
-.menu .hide{display:none;}
+.menu a {
+    cursor: pointer;
+}
+
+.menu .hide {
+    display: none;
+}
+
+
+/* BODY SHAPING */
+.click {
+    cursor: pointer;
+}
+
+.custom-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.form-click {
+    /* blue-4 */
+    background-color: #004CDE;
+    border-radius: 4px;
+    /* border: 5px solid #4584FF; */
+    width: fit-content;
+    padding: 8px 12px;
+}
+
+.form-click>p {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-weight: 600;
+}
+
+.slidecontainer {
+    width: 300px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    /* 기본 CSS 스타일을 적용하지 않기 위해서 */
+    width: 100%;
+    /* 슬라이더 길이 */
+    height: 15px;
+    /* 슬라이더 두께 */
+    border-radius: 5px;
+    /* 슬라이더 모서리를 약간 둥글게 */
+    background: #ccc;
+    /* 슬라이더 색상 */
+    outline: none;
+    /* 슬라이더 테두리 없이 */
+}
+
+/* 슬라이더 핸들(클릭해서 드래그하는 부분) 커스텀 
+(Chrome, Opera, Safari, Edge 브라우저를 위해서는 -webkit-을,
+Firefox 브라우저를 위해서는 -moz- 를 사용하세요 */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* 기본 CSS 스타일을 적용하지 않기 위해서 */
+    appearance: none;
+    /* 기본 CSS 스타일을 적용하지 않기 위해서 */
+    width: 25px;
+    /* 슬라이더 핸들 길이 */
+    height: 25px;
+    /* 슬라이더 핸들 높이 */
+    border-radius: 50%;
+    /* 핸들 모양을 원모양으로 만들기 위함 */
+    background: #00f;
+    /* 슬라이더 핸들 색상 */
+    cursor: pointer;
+    /* 슬라이더 핸들에 마우스를 갖다대면 포인터로 변경 */
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    /* 슬라이더 핸들 길이 */
+    height: 25px;
+    /* 슬라이더 핸들 높이 */
+    border-radius: 50%;
+    /* 핸들 모양을 원모양으로 만들기 위함 */
+    background: #00f;
+    /* 슬라이더 핸들 색상 */
+    cursor: pointer;
+    /* 슬라이더 핸들에 마우스를 갖다대면 포인터로 변경 */
+}
+
+#single_file_drop_zone {
+    border: 5px solid yellowgreen;
+    width: 200px;
+    height: 100px;
+}
+
+.dragging {
+    background-color: yellow;
+}

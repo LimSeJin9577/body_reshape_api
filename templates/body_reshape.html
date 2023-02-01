@@ -14,17 +14,50 @@
 <div class="col-12 up-area">
     <ul class="mystyle_ul">
         <li class="menu">
-            <a><h3 class="cap">Work with Image</h3></a>
-            <!-- Drop & Drag Image -->
-            <!-- Show Image -->
-            <!-- dragbar -->
+            <a>
+                <h3 class="cap">Work with Image</h3>
+            </a>
+
+            <div class="custom-column">
+                <!-- TODO: DRAG & DROP -->
+                <!-- <div id="single_file_drop_zone">
+                <p>Drag one or more files to this <i>drop zone</i>.</p>
+                </div> -->
+
+                <!-- Drop & Drag Image -->
+                <input type="file" id="single_file_upload" name="single_file_upload" style="display: none;" />
+
+                <label for="single_file_upload" class="click form-click">
+                    <p>클릭하여 파일 업로드</p>
+                </label>
+
+                <!-- Show Image -->
+                <div class="custom-row center" style="height: 400px;">
+                    <img style="width: 300px;" id="single_file_input" src="">
+
+                    <img src="{{ url_for('static', path='/icons/icon-arrow_right.svg') }}">
+
+                    <img style="width: 300px;" id="single_file_output" src="">
+                </div>
+
+                <!-- dragbar -->
+                <div class="slidecontainer center">
+                    <input type="range" min="0" max="1" value="0" step="0.1" class="slider" id="single_file_slider">
+                    <p>parameter value: <span id="single_file_slider_value"></span></p>
+                </div>
+
+            </div>
+
         </li>
     </ul>
 </div>
+
 <div class="col-12 up-area">
     <ul style="list-style-type: none;">
         <li class="menu">
-            <a><h3 class="cap">Work with Files</h3></a>
+            <a>
+                <h3 class="cap">Work with Files</h3>
+            </a>
             <!-- drop & drag files -->
         </li>
     </ul>
@@ -39,15 +72,15 @@
 
 <script>
     // html dom 이 다 로딩된 후 실행된다.
-    $(document).ready(function(){
+    $(document).ready(function () {
         // menu 클래스 바로 하위에 있는 a 태그를 클릭했을때
-        $(".menu>a").click(function(){
+        $(".menu>a").click(function () {
             var submenu = $(this).next("ul");
- 
+
             // submenu 가 화면상에 보일때는 위로 보드랍게 접고 아니면 아래로 보드랍게 펼치기
-            if( submenu.is(":visible") ){
+            if (submenu.is(":visible")) {
                 submenu.slideUp();
-            }else{
+            } else {
                 submenu.slideDown();
             }
         });
