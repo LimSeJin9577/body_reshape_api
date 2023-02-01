@@ -30,9 +30,4 @@ https://drive.google.com/drive/folders/1-_qEqwZuL6bXLqPNHq8gAEe4_9FhNv7o?usp=sha
   
 <Directions>  
 body_reshape_api
-    ㄴ app
-        ㄴ library  
-            ㄴ body_reshape  
-                ㄴ models  
-                    ㄴ body_reshape_model.pth
-                    ㄴ body_pose_model.pth
+    ㄴ api
