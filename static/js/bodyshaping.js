@@ -1,19 +1,32 @@
+///// LOADING SCREEN /////
+function hideLoading() {
+    $("#loading").addClass('loading-screen-hidden');
+}
+function showLoading() {
+    $("#loading").removeClass('loading-screen-hidden');
+}
+
+
 ///// SINGLE FILE OUTPUT /////
 var single_output = document.getElementById("single_file_output");
 var single_img_path_list = [];
 
 $("#single_file_upload").change((function (event) {
+    //싱글 파일 업로드
     try {
+        showLoading();
         readSingleImage(event.target);
         workWithImage(event.target.files[0]).then((response) => {
             console.log(response);
             single_img_path_list = response["img_path_list"];
             const index = Math.floor(single_slider.value / 0.1);
             single_output.src = single_img_path_list[index];
+            hideLoading();
         });
     } catch (error) {
         console.log("===error===");
         console.log(error);
+        hideLoading();
     }
 }));
 
@@ -51,7 +64,7 @@ single_slider.oninput = function () {
 var multi_input_list = []; //file list
 var multi_input_len = 1;
 var multi_output = document.getElementById("multi_file_output");
-var multi_img_path_list = [];//output src list
+var multi_img_path_list = []; //output src list
 
 var multi_index = 0;
 var multi_file_prev = document.getElementById("multi_file_prev");
@@ -59,16 +72,20 @@ var multi_file_next = document.getElementById("multi_file_next");
 
 multi_file_prev.addEventListener("click", function () {
     //files - prev btn click
-    multi_index--;
-    multi_index %= multi_input_len;
+    if (multi_index == 0) {
+        multi_index = multi_input_len - 1;
+    } else {
+        multi_index--;
+    }
     readMultiImage(multi_input_list[multi_index]);
     multi_output.src = multi_img_path_list[multi_index];
 });
 
 multi_file_next.addEventListener("click", function () {
     //files - next btn click
-    multi_index++;
-    multi_index %= multi_input_len;
+    // multi_index++;
+    multi_index = (multi_index + 1) % multi_input_len;
+    // multi_index %= multi_input_len;
     readMultiImage(multi_input_list[multi_index]);
     multi_output.src = multi_img_path_list[multi_index];
 });
@@ -76,24 +93,25 @@ multi_file_next.addEventListener("click", function () {
 $("#multi_file_upload").change((function (event) {
     //파일 업로드 감지
     try {
+        showLoading();
         multi_index = 0;
         //input file 칸 바꿔주기
         if (event.target.files && event.target.files[0]) {
             multi_input_list = event.target.files;
             multi_input_len = multi_input_list.length;
             readMultiImage(multi_input_list[multi_index]);
+
+            workWithFiles(multi_slider.value, event.target.files).then((response) => {
+                console.log(response);
+                multi_img_path_list = response["img_path_list"];
+                multi_output.src = multi_img_path_list[multi_index];
+                hideLoading();
+            });
         }
-
-        console.log(event.target.files);
-
-        workWithFiles(multi_slider.value, event.target.files).then((response) => {
-            console.log(response);
-            multi_img_path_list = response["img_path_list"];
-            multi_output.src = multi_img_path_list[multi_index];
-        });
     } catch (error) {
         console.log("===error===");
         console.log(error);
+        hideLoading();
     }
 }));
 
@@ -115,9 +133,17 @@ var multi_value = document.getElementById("multi_file_slider_value");
 multi_value.innerHTML = multi_slider.value;
 
 multi_slider.oninput = function () {
+    showLoading();
     multi_value.innerHTML = this.value;
-    //parameter 값에 맞는 이미지 보여주기
-    multi_output.src = multi_img_path_list[Math.floor(this.value / 0.1)];
+
+    //parameter 값에 맞게 API 다시 보내기
+    workWithFiles(multi_slider.value, multi_input_list).then((response) => {
+        multi_index = 0;
+        console.log(response);
+        multi_img_path_list = response["img_path_list"];
+        multi_output.src = multi_img_path_list[multi_index];
+        hideLoading();
+    });
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -145,7 +171,11 @@ const workWithImage = async (file) => {
 
 const workWithFiles = async (degree, files) => {
     const formData = new FormData();
-    formData.append('files', files);
+
+    var file_len = files.length;
+    for (var x = 0; x < file_len; x++) {
+        formData.append("files", files[x]);
+    }
 
     return await $.ajax({
         url: '/upload_files?degree=' + degree,

@@ -96,13 +96,13 @@
                 </div>
 
                 <!-- Next & Prev Buttons -->
-                <div class="custom-row">
+                <div class="custom-row gap-12 center">
 
-                    <div class="click" id="multi_file_prev">
+                    <div class="click svg-btn" id="multi_file_prev">
                         <img src="{{ url_for('static', path='/icons/icon-double_arrow_left.svg') }}">
                     </div>
 
-                    <div class="click" id="multi_file_next">
+                    <div class="click svg-btn" id="multi_file_next">
                         <img src="{{ url_for('static', path='/icons/icon-double_arrow_right.svg') }}">
                     </div>
 
@@ -112,6 +112,12 @@
             </div>
         </li>
     </ul>
+</div>
+
+
+<!-- LOADING SCREEN -->
+<div class="loading-screen-hidden loading-screen custom-column center" id="loading">
+    <p>결과 불러오는 중</p>
 </div>
 
 
