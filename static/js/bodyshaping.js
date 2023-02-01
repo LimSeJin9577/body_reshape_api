@@ -1,10 +1,14 @@
-
+///// SINGLE FILE OUTPUT /////
+var output = document.getElementById("single_file_output");
+var img_path_list = [];
 
 $("#single_file_upload").change((function (event) {
     try {
         readImage(event.target);
         workWithImage(event.target.files[0]).then((response) => {
-            console.log("ss");
+            console.log(response);
+            img_path_list = response["img_path_list"];
+            output.src = img_path_list[0];
         });
     } catch (error) {
         console.log("===error===");
@@ -34,7 +38,8 @@ value.innerHTML = slider.value;
 
 slider.oninput = function () {
     value.innerHTML = this.value;
-    //TODO: 이미지 다르게 보여주기
+    //parameter 값에 맞는 이미지 보여주기
+    output.src = img_path_list[Math.floor(this.value / 0.1)];
 }
 
 
@@ -62,11 +67,11 @@ slider.oninput = function () {
 // });
 
 ///// API FUNCTION /////
-const workWithImage = (file) => {
+const workWithImage = async (file) => {
     const formData = new FormData();
     formData.append('image', file);
 
-    return $.ajax({
+    return await $.ajax({
         url: '/upload_image/',
         type: 'post',
         enctype: 'multipart/form-data',

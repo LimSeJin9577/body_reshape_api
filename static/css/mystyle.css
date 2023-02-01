@@ -194,7 +194,7 @@ Firefox 브라우저를 위해서는 -moz- 를 사용하세요 */
     /* 슬라이더 핸들 높이 */
     border-radius: 50%;
     /* 핸들 모양을 원모양으로 만들기 위함 */
-    background: #00f;
+    background: #004CDE;
     /* 슬라이더 핸들 색상 */
     cursor: pointer;
     /* 슬라이더 핸들에 마우스를 갖다대면 포인터로 변경 */
@@ -207,7 +207,7 @@ Firefox 브라우저를 위해서는 -moz- 를 사용하세요 */
     /* 슬라이더 핸들 높이 */
     border-radius: 50%;
     /* 핸들 모양을 원모양으로 만들기 위함 */
-    background: #00f;
+    background: #004CDE;
     /* 슬라이더 핸들 색상 */
     cursor: pointer;
     /* 슬라이더 핸들에 마우스를 갖다대면 포인터로 변경 */
