@@ -145,13 +145,23 @@ footer {
     align-self: center;
 }
 
+.gap-28 {
+    gap: 28px;
+}
+
 .form-click {
     /* blue-4 */
     background-color: #004CDE;
     border-radius: 4px;
     /* border: 5px solid #4584FF; */
     width: fit-content;
+    height: fit-content;
     padding: 8px 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .form-click>p {
@@ -213,6 +223,8 @@ Firefox 브라우저를 위해서는 -moz- 를 사용하세요 */
     /* 슬라이더 핸들에 마우스를 갖다대면 포인터로 변경 */
 }
 
+
+/* NOT USE */
 #single_file_drop_zone {
     border: 5px solid yellowgreen;
     width: 200px;

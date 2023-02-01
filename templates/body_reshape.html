@@ -24,12 +24,20 @@
                 <p>Drag one or more files to this <i>drop zone</i>.</p>
                 </div> -->
 
-                <!-- Drop & Drag Image -->
-                <input type="file" id="single_file_upload" name="single_file_upload" style="display: none;" />
+                <div class="custom-row gap-28" style="align-items: center;">
+                    <!-- Drop & Drag Image -->
+                    <input type="file" id="single_file_upload" name="single_file_upload" style="display: none;" />
 
-                <label for="single_file_upload" class="click form-click">
-                    <p>클릭하여 파일 업로드</p>
-                </label>
+                    <label for="single_file_upload" class="click form-click">
+                        <p>클릭하여 파일 업로드</p>
+                    </label>
+
+                    <!-- dragbar -->
+                    <div class="slidecontainer">
+                        <input type="range" min="0" max="1" value="0" step="0.1" class="slider" id="single_file_slider">
+                        <p>parameter value: <span id="single_file_slider_value"></span></p>
+                    </div>
+                </div>
 
                 <!-- Show Image -->
                 <div class="custom-row center" style="height: 450px;">
@@ -42,17 +50,15 @@
                         alt=" ">
                 </div>
 
-                <!-- dragbar -->
-                <div class="slidecontainer">
-                    <input type="range" min="0" max="1" value="0" step="0.1" class="slider" id="single_file_slider">
-                    <p>parameter value: <span id="single_file_slider_value"></span></p>
-                </div>
-
             </div>
 
         </li>
     </ul>
 </div>
+
+
+<hr />
+
 
 <div class="col-12 up-area">
     <ul style="list-style-type: none;">
@@ -60,7 +66,50 @@
             <a>
                 <h3 class="cap">Work with Files</h3>
             </a>
-            <!-- drop & drag files -->
+            <div class="custom-column">
+                <div class="custom-row gap-28" style="align-items: center;">
+                    <!-- Drop & Drag Files -->
+                    <input type="file" multiple id="multi_file_upload" name="multi_file_upload"
+                        style="display: none;" />
+
+                    <label for="multi_file_upload" class="click form-click">
+                        <p>클릭하여 파일들 업로드</p>
+                    </label>
+
+                    <!-- Parameter 조정 -->
+                    <!-- dragbar -->
+                    <div class="slidecontainer">
+                        <input type="range" min="0" max="1" value="0" step="0.1" class="slider" id="multi_file_slider">
+                        <p>parameter value: <span id="multi_file_slider_value"></span></p>
+                    </div>
+                </div>
+
+                <!-- Show Image -->
+                <div class="custom-row center" style="height: 450px;">
+                    <img style="height: 450px; width: 300px; object-fit: contain;" id="multi_file_input" src=""
+                        alt="파일들을 넣어주세요">
+
+                    <img src="{{ url_for('static', path='/icons/icon-arrow_right.svg') }}">
+
+                    <img style="height: 450px; width: 300px; object-fit: contain;" id="multi_file_output" src=""
+                        alt=" ">
+                </div>
+
+                <!-- Next & Prev Buttons -->
+                <div class="custom-row">
+
+                    <div class="click" id="multi_file_prev">
+                        <img src="{{ url_for('static', path='/icons/icon-double_arrow_left.svg') }}">
+                    </div>
+
+                    <div class="click" id="multi_file_next">
+                        <img src="{{ url_for('static', path='/icons/icon-double_arrow_right.svg') }}">
+                    </div>
+
+                </div>
+
+
+            </div>
         </li>
     </ul>
 </div>
