@@ -28,6 +28,6 @@ RESPONSE_TYPE : List(str)
 ### Google Drive model_path  
 https://drive.google.com/drive/folders/1-_qEqwZuL6bXLqPNHq8gAEe4_9FhNv7o?usp=sharing  
   
-<Directions>  
-body_reshape_api
-    ㄴ api
+#### Directions
+/body_reshape_api/app/library/body_reshape/models/... >> model directory
+
