@@ -13,9 +13,9 @@ import argparse
 import numpy as np
 import glob
 import tqdm
-import os
 import json
 import shutil
+import os
 
 
 def recurve_search(root_path, all_paths, suffix=[]):
@@ -52,11 +52,14 @@ if __name__ == "__main__":
         print("올바르지 않은 degree 값입니다.")
         exit(0)
 
+    # Initiate ENV
+    ENV_MODEL = os.getcwd()
+    ROOT_ENV = ENV_MODEL.split("body_reshape_api")[0]
     # Initiate without testconfig
-    reshape_ckpt_path = "/home/sejin/gitfile/body_reshape_api/app/library/body_reshape/models/body_reshape_model.pth" # static, Reshape Model
-    pose_estimation_ckpt = "/home/sejin/gitfile/body_reshape_api/app/library/body_reshape/models/body_pose_model.pth" # static, Pose Model
-    save_dir = "/home/sejin/gitfile/body_reshape_api/static/resources/temp_save" # static, output_path
-    src_dir = "/home/sejin/gitfile/body_reshape_api/static/resources/temp_src" # static, input_path
+    reshape_ckpt_path = os.path.join(ENV_MODEL, "models/body_reshape_model.pth") # static, Reshape Model
+    pose_estimation_ckpt = os.path.join(ENV_MODEL,"models/body_pose_model.pth") # static, Pose Model
+    save_dir = os.path.join(ROOT_ENV,"body_reshape_api/static/resources/temp_save") # static, output_path
+    src_dir = os.path.join(ROOT_ENV,"body_reshape_api/static/resources/temp_src") # static, input_path
 
     
     # timestamp = time.strftime("%Y%m%d-%H%M%S", time.localtime())

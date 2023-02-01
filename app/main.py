@@ -8,11 +8,14 @@ from .library.helpers import *
 from typing import List
 from pydantic.main import BaseModel
 import subprocess
+import os
 
 from app.library.helpers import toImage, save_images
 from app.library.helpers import clean_src_path, get_temp_save
 
 app = FastAPI()
+
+ROOT_ENV = os.getcwd()
 
 # Jinja문법, templates폴더에 연결
 templates = Jinja2Templates(directory = "templates")
@@ -76,6 +79,7 @@ async def upload_files(request: Request, degree : float, files : List[UploadFile
 
 # Operate Model Inference.py
 def inference(mode="", degree=0.0) :
-    subprocess.run([f"/home/sejin/gitfile/body_reshape_api/app/library/body_reshape/model.sh {mode} {degree}"], shell=True)
+    sh = os.path.join(ROOT_ENV, "app/library/body_reshape/model.sh")
+    subprocess.run([f"{sh} {mode} {degree} {ROOT_ENV}"], shell=True)
 
 
