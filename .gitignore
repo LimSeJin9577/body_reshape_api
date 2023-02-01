@@ -1,2 +1,3 @@
 static/temp_save/*
 static/temp_src/*
+*.pth
