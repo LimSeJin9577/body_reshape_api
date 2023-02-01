@@ -1,5 +1,5 @@
-static/temp_save/*
-static/temp_src/*
+static/resources/temp_save/*
+static/resources/temp_src/*
 *.pth
 
 /test_venv
