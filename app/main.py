@@ -70,8 +70,9 @@ async def upload_files(request: Request, degree : float, files : List[UploadFile
 
     inference(mode="files", degree=degree)
     for name in name_list :
-        img_path_list.append(get_temp_save(name))
+        img_path_list.append(get_temp_save(name)[0])
     img_path_list.sort()
+    
 
     return ImagePaths(
         img_path_list = img_path_list
