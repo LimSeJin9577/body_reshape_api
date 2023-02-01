@@ -24,7 +24,8 @@ RESPONSE_TYPE : List(str)
     - output image paths
 
 <hr>  
-### Google Drive model_path
+
+### Google Drive model_path  
 https://drive.google.com/drive/folders/1-_qEqwZuL6bXLqPNHq8gAEe4_9FhNv7o?usp=sharing  
   
 <Directions>  
