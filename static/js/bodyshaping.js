@@ -6,6 +6,11 @@ function showLoading() {
     $("#loading").removeClass('loading-screen-hidden');
 }
 
+$("#loading").click(() => {
+    //뒤에 작업 클릭 안되도록 임의로 넣어놓은 것
+    console.log("loading click");
+});
+
 
 ///// SINGLE FILE OUTPUT /////
 var single_output = document.getElementById("single_file_output");
@@ -69,6 +74,8 @@ var multi_img_path_list = []; //output src list
 var multi_index = 0;
 var multi_file_prev = document.getElementById("multi_file_prev");
 var multi_file_next = document.getElementById("multi_file_next");
+var multi_upload_btn = document.getElementById("multi_upload_btn");
+var multi_value = document.getElementById("multi_file_slider_value");
 
 multi_file_prev.addEventListener("click", function () {
     //files - prev btn click
@@ -90,23 +97,35 @@ multi_file_next.addEventListener("click", function () {
     multi_output.src = multi_img_path_list[multi_index];
 });
 
+//보정 사진 받아오기 버튼
+multi_upload_btn.addEventListener("click", function () {
+    //API 연결
+    if (multi_input_list.length == 0) {
+        alert("파일을 넣어주세요");
+        return;
+    }
+    else if (multi_value.value == "" || parseInt(multi_value.value) > 1 || parseInt(multi_value.value) > 0) {
+        alert("degree를 0~1 사이로 입력해주세요");
+        return;
+    }
+    showLoading();
+    workWithFiles(multi_value.value, multi_input_list).then((response) => {
+        console.log(response);
+        multi_img_path_list = response["img_path_list"];
+        multi_output.src = multi_img_path_list[multi_index];
+        hideLoading();
+    });
+});
+
 $("#multi_file_upload").change((function (event) {
     //파일 업로드 감지
     try {
-        showLoading();
         multi_index = 0;
-        //input file 칸 바꿔주기
+        //file 저장, 이미지 보여주기
         if (event.target.files && event.target.files[0]) {
             multi_input_list = event.target.files;
             multi_input_len = multi_input_list.length;
             readMultiImage(multi_input_list[multi_index]);
-
-            workWithFiles(multi_slider.value, event.target.files).then((response) => {
-                console.log(response);
-                multi_img_path_list = response["img_path_list"];
-                multi_output.src = multi_img_path_list[multi_index];
-                hideLoading();
-            });
         }
     } catch (error) {
         console.log("===error===");
@@ -125,25 +144,6 @@ function readMultiImage(file) {
     }
     // reader가 이미지 읽도록 하기
     reader.readAsDataURL(file);
-}
-
-//multi slider update
-var multi_slider = document.getElementById("multi_file_slider");
-var multi_value = document.getElementById("multi_file_slider_value");
-multi_value.innerHTML = multi_slider.value;
-
-multi_slider.oninput = function () {
-    showLoading();
-    multi_value.innerHTML = this.value;
-
-    //parameter 값에 맞게 API 다시 보내기
-    workWithFiles(multi_slider.value, multi_input_list).then((response) => {
-        multi_index = 0;
-        console.log(response);
-        multi_img_path_list = response["img_path_list"];
-        multi_output.src = multi_img_path_list[multi_index];
-        hideLoading();
-    });
 }
 
 ////////////////////////////////////////////////////////////////////////////
