@@ -4,10 +4,10 @@ body_reshape_api for codime
 # Main Page
 ### GET Main Page
 [GET]  
-URL : "/"
-HTML : "body_reshape.html"
-REQUEST_TYPE : *request 
-RESPONSE_TYPE : HTML
+URL : "/"  
+HTML : "body_reshape.html"  
+REQUEST_TYPE : *request  
+RESPONSE_TYPE : HTML  
 
 ### POST with 1 image
 [POST]  
