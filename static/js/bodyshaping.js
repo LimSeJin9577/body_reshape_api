@@ -109,12 +109,16 @@ multi_upload_btn.addEventListener("click", function () {
         return;
     }
     showLoading();
-    workWithFiles(multi_value.value, multi_input_list).then((response) => {
-        console.log(response);
-        multi_img_path_list = response["img_path_list"];
-        multi_output.src = multi_img_path_list[multi_index];
-        hideLoading();
-    });
+    workWithFiles(multi_value.value, multi_input_list)
+        .then((response) => {
+            console.log(response);
+            multi_img_path_list = response["img_path_list"];
+            multi_output.src = multi_img_path_list[multi_index];
+            hideLoading();
+        })
+        .catch((e) => {
+            hideLoading();
+        });
 });
 
 $("#multi_file_upload").change((function (event) {
@@ -130,7 +134,6 @@ $("#multi_file_upload").change((function (event) {
     } catch (error) {
         console.log("===error===");
         console.log(error);
-        hideLoading();
     }
 }));
 
